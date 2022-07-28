@@ -1,6 +1,9 @@
 import XRegExp, { NamedGroupsArray } from 'xregexp'
 import { Directional, Street_Type, State_Code } from './constants'
 import { capitalize, flatten, invert, keys, each, values } from './utils'
+import fastJson from 'fast-json-stringify'
+import stringSimilarity from 'string-similarity'
+import schema from './schema.json'
 
 let Addr_Match: any = {}
 
@@ -357,4 +360,13 @@ export const parseIntersection = function (address: string) {
   }
 
   return parts
+}
+
+export const toString = (address: Address): string => {
+  const stringify = fastJson(schema)
+  return stringify(address)
+}
+
+export const compare = (first: Address, second: Address): number => {
+  return stringSimilarity.compareTwoStrings(toString(first), toString(second))
 }

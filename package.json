@@ -21,22 +21,29 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^18.0.6",
+    "@types/string-similarity": "^4.0.0",
     "@typescript-eslint/eslint-plugin": "^5.30.7",
     "@typescript-eslint/parser": "^5.30.7",
     "eslint": "^8.20.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-prettier": "^4.2.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.2.4",
     "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.0.0",
+    "fast-json-stringify": "^5.1.0",
     "prettier": "^2.7.1",
+    "string-similarity": "^4.0.4",
     "ts-node": "^10.9.1",
     "typescript": "^4.7.4"
   },
   "dependencies": {
     "xregexp": "^5.1.1"
+  },
+  "peerDependencies": {
+    "fast-json-stringify": "*",
+    "string-similarity  ": "*"
   },
   "engines": {
     "node": ">= 14"

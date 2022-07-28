@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "default": {},
+  "title": "Root Schema",
+  "required": [
+    "number",
+    "street",
+    "type",
+    "sec_unit_type",
+    "sec_unit_num",
+    "city",
+    "state",
+    "postcode"
+  ],
+  "properties": {
+    "number": {
+      "type": "string",
+      "default": "",
+      "title": "The number Schema",
+      "examples": ["41"]
+    },
+    "street": {
+      "type": "string",
+      "default": "",
+      "title": "The street Schema",
+      "examples": ["Ensfield"]
+    },
+    "type": {
+      "type": "string",
+      "default": "",
+      "title": "The type Schema",
+      "examples": ["St"]
+    },
+    "sec_unit_type": {
+      "type": "string",
+      "default": "",
+      "title": "The sec_unit_type Schema",
+      "examples": ["Unit"]
+    },
+    "sec_unit_num": {
+      "type": "string",
+      "default": "",
+      "title": "The sec_unit_num Schema",
+      "examples": ["6"]
+    },
+    "city": {
+      "type": "string",
+      "default": "",
+      "title": "The city Schema",
+      "examples": ["Burrington"]
+    },
+    "state": {
+      "type": "string",
+      "default": "",
+      "title": "The state Schema",
+      "examples": ["QLD"]
+    },
+    "postcode": {
+      "type": "string",
+      "default": "",
+      "title": "The postcode Schema",
+      "examples": ["2000"]
+    }
+  },
+  "examples": [
+    {
+      "number": "41",
+      "street": "Ensfield",
+      "type": "St",
+      "sec_unit_type": "Unit",
+      "sec_unit_num": "6",
+      "city": "Burrington",
+      "state": "QLD",
+      "postcode": "2000"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import { parseLocation } from './index'
+import { parseLocation, compare } from './index'
 import assert from 'assert'
 
 const address: { [key: string]: object } = {
@@ -116,3 +116,53 @@ Object.keys(address).forEach(function (k) {
   let parsed = parseLocation(k)
   assert.deepEqual(address[k], parsed)
 })
+
+let sameAddress = compare(
+  {
+    city: 'Burrington',
+    number: '41',
+    postcode: '2000',
+    sec_unit_num: '6',
+    sec_unit_type: 'Unit',
+    state: 'QLD',
+    street: 'Ensfield',
+    type: 'St'
+  },
+  {
+    city: 'Burrington',
+    number: '41',
+    postcode: '2000',
+    sec_unit_num: '6',
+    sec_unit_type: 'Unit',
+    state: 'QLD',
+    street: 'Ensfield',
+    type: 'St'
+  }
+)
+
+assert.equal(sameAddress, 1)
+
+let differentAddress = compare(
+  {
+    sec_unit_type: 'Level',
+    sec_unit_num: '23',
+    number: '353',
+    street: 'Brunswick',
+    type: 'St',
+    city: 'Fortitude Valley',
+    state: 'QLD',
+    postcode: '4006'
+  },
+  {
+    city: 'Burrington',
+    number: '41',
+    postcode: '2000',
+    sec_unit_num: '6',
+    sec_unit_type: 'Unit',
+    state: 'QLD',
+    street: 'Ensfield',
+    type: 'St'
+  }
+)
+
+assert.equal(differentAddress, 0.7820069204152249)
