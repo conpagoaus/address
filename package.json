@@ -43,7 +43,7 @@
   },
   "peerDependencies": {
     "fast-json-stringify": "*",
-    "string-similarity  ": "*"
+    "string-similarity": "*"
   },
   "engines": {
     "node": ">= 14"

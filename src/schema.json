@@ -3,17 +3,7 @@
   "$id": "http://example.com/example.json",
   "type": "object",
   "default": {},
-  "title": "Root Schema",
-  "required": [
-    "number",
-    "street",
-    "type",
-    "sec_unit_type",
-    "sec_unit_num",
-    "city",
-    "state",
-    "postcode"
-  ],
+  "title": "Address Schema",
   "properties": {
     "number": {
       "type": "string",
