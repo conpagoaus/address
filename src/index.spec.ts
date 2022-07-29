@@ -1,7 +1,6 @@
 import { parseLocation, compare } from './index'
-import assert from 'assert'
 
-const address: { [key: string]: object } = {
+const addressess: { [key: string]: object } = {
   '9 Mulga St Blackwater QLD 4717': {
     city: 'Blackwater',
     number: '9',
@@ -112,57 +111,70 @@ const address: { [key: string]: object } = {
   }
 }
 
-Object.keys(address).forEach(function (k) {
-  let parsed = parseLocation(k)
-  assert.deepEqual(address[k], parsed)
+describe('addressess', () => {
+  test.each(
+    Object.keys(addressess).map((k) => ({
+      a: k,
+      b: parseLocation(k),
+      expected: addressess[k]
+    }))
+  )('$a', ({ b, expected }) => {
+    expect(b).toMatchObject(expected)
+  })
 })
 
-let sameAddress = compare(
-  {
-    city: 'Burrington',
-    number: '41',
-    postcode: '2000',
-    sec_unit_num: '6',
-    sec_unit_type: 'Unit',
-    state: 'QLD',
-    street: 'Ensfield',
-    type: 'St'
-  },
-  {
-    city: 'Burrington',
-    number: '41',
-    postcode: '2000',
-    sec_unit_num: '6',
-    sec_unit_type: 'Unit',
-    state: 'QLD',
-    street: 'Ensfield',
-    type: 'St'
-  }
-)
+describe('compare', () => {
+  test('sameAddress ', () => {
+    const sameAddress = compare(
+      {
+        city: 'Burrington',
+        number: '41',
+        postcode: '2000',
+        sec_unit_num: '6',
+        sec_unit_type: 'Unit',
+        state: 'QLD',
+        street: 'Ensfield',
+        type: 'St'
+      },
+      {
+        city: 'Burrington',
+        number: '41',
+        postcode: '2000',
+        sec_unit_num: '6',
+        sec_unit_type: 'Unit',
+        state: 'QLD',
+        street: 'Ensfield',
+        type: 'St'
+      }
+    )
 
-assert.equal(sameAddress, 1)
+    expect(sameAddress).toEqual(1)
+  })
 
-let differentAddress = compare(
-  {
-    sec_unit_type: 'Level',
-    sec_unit_num: '23',
-    number: '353',
-    street: 'Brunswick',
-    type: 'St',
-    city: 'Fortitude Valley',
-    state: 'QLD',
-    postcode: '4006'
-  },
-  {
-    city: 'Burrington',
-    number: '41',
-    postcode: '2000',
-    sec_unit_num: '6',
-    sec_unit_type: 'Unit',
-    state: 'QLD',
-    street: 'Ensfield',
-    type: 'St'
-  }
-)
+  test('differentAddress ', () => {
+    const differentAddress = compare(
+      {
+        sec_unit_type: 'Level',
+        sec_unit_num: '23',
+        number: '353',
+        street: 'Brunswick',
+        type: 'St',
+        city: 'Fortitude Valley',
+        state: 'QLD',
+        postcode: '4006'
+      },
+      {
+        city: 'Burrington',
+        number: '41',
+        postcode: '2000',
+        sec_unit_num: '6',
+        sec_unit_type: 'Unit',
+        state: 'QLD',
+        street: 'Ensfield',
+        type: 'St'
+      }
+    )
 
-assert.equal(differentAddress, 0.7820069204152249)
+    expect(differentAddress).toEqual(0.7820069204152249)
+  })
+})

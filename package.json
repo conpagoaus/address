@@ -1,12 +1,12 @@
 {
   "name": "@conpago/address",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Address utilities for parsing and normalizing addressess",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "prepare": "tsc",
-    "test": "ts-node ./src/index.test.ts",
+    "test": "NODE_ENV=test jest",
     "build": "tsc",
     "lint": "eslint --fix ./src"
   },
@@ -20,6 +20,7 @@
   "repository": "https://github.com/conpagoaus/address",
   "license": "ISC",
   "devDependencies": {
+    "@types/jest": "^28.1.6",
     "@types/node": "^18.0.6",
     "@types/string-similarity": "^4.0.0",
     "@typescript-eslint/eslint-plugin": "^5.30.7",
@@ -33,8 +34,10 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.0.0",
     "fast-json-stringify": "^5.1.0",
+    "jest": "^28.1.3",
     "prettier": "^2.7.1",
     "string-similarity": "^4.0.4",
+    "ts-jest": "^28.0.7",
     "ts-node": "^10.9.1",
     "typescript": "^4.7.4"
   },
