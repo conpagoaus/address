@@ -276,7 +276,7 @@ function lazyInit() {
 const normalize_address = function (parts: NamedGroupsArray | undefined) {
   lazyInit()
   if (!parts) return null
-  let parsed: any = {}
+  const parsed: any = {}
 
   Object.keys(parts).forEach((k) => {
     if (['input', 'index'].indexOf(k) !== -1 || isFinite(Number(k))) return
@@ -362,6 +362,11 @@ export const parseIntersection = function (address: string) {
   return parts
 }
 
+export const normalize = (address: { [key: string]: string }): Address => {
+  const stringify = fastJson(schema)
+  return stringify(address)
+}
+
 export const toString = (address: Address): string => {
   const stringify = fastJson(schema)
   return stringify(address)
@@ -369,4 +374,12 @@ export const toString = (address: Address): string => {
 
 export const compare = (first: Address, second: Address): number => {
   return stringSimilarity.compareTwoStrings(toString(first), toString(second))
+}
+
+export const compareStrings = (first: string, second: string): number => {
+  const ad1 = parseLocation(first)
+
+  const ad2 = parseLocation(second)
+
+  return stringSimilarity.compareTwoStrings(toString(ad1), toString(ad2))
 }

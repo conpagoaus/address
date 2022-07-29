@@ -10,6 +10,7 @@ export const Directional: { [key: string]: string } = {
 }
 
 export const Street_Type: { [key: string]: string } = {
+  Apartment: 'AP',
   Alley: 'AL',
   Arcade: 'ARC',
   Avenue: 'AVE',
@@ -85,6 +86,7 @@ export const Street_Type: { [key: string]: string } = {
   'Right of Way': 'RTW',
   Siding: 'SDG',
   Square: 'SQ',
+  Shop: 'SH',
   Street: 'ST',
   STS: 'ST',
   Streets: 'STS',
